@@ -10,7 +10,7 @@ sudo DEBIAN_FRONTEND=noninteractive apt-get --assume-yes update ${APTARGS}
 
 sudo DEBIAN_FRONTEND=noninteractive apt-get --assume-yes upgrade ${APTARGS}
 
-sudo DEBIAN_FRONTEND=noninteractive apt-get install --assume-yes ${APTARGS} htop git vim curl wget tar software-properties-common htop unattended-upgrades gpg-agent apt-transport-https ca-certificates thin-provisioning-tools
+sudo DEBIAN_FRONTEND=noninteractive apt-get install --assume-yes ${APTARGS} net-tools htop git vim curl wget tar software-properties-common htop unattended-upgrades gpg-agent apt-transport-https ca-certificates thin-provisioning-tools
 
 sudo unattended-upgrades -v
 
@@ -32,3 +32,10 @@ sudo chmod +x tfc-agent-core
 sudo cp tfc-agent /usr/local/bin
 
 sudo cp tfc-agent-core /usr/local/bin
+
+sudo DEBIAN_FRONTEND=noninteractive apt-get --assume-yes update ${APTARGS}
+sudo DEBIAN_FRONTEND=noninteractive apt-get --assume-yes install netdata ${APTARGS}
+sudo sed -i -e 's/localhost/0.0.0.0/g' /etc/netdata/netdata.conf
+sudo sed -i -e 's/\[global\]/\[global\]\n    update every = 2/' /etc/netdata/netdata.conf
+
+sudo systemctl enable netdata.service
