@@ -8,7 +8,7 @@ packer {
 }
 
 source "amazon-ebs" "ubuntu" {
-  ami_name      = "packer-aws-ubuntufocal-tfcagent-6"
+  ami_name      = "packer-aws-ubuntufocal-tfcagent-9"
   instance_type = "t3.large"
   region        = "eu-central-1"
   source_ami_filter {
@@ -30,6 +30,7 @@ build {
   ]
 
   provisioner "shell" {
+    execute_command = "sudo -S env {{ .Vars }} {{ .Path }}"
     script = "scripts/packages.sh"
   }
 }
