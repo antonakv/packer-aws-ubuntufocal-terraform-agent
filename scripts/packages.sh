@@ -21,6 +21,13 @@ sudo DEBIAN_FRONTEND=noninteractive apt-get -y update ${APTARGS}
 
 sudo DEBIAN_FRONTEND=noninteractive apt-get -y install net-tools docker-ce=5:20.10.7~3-0~ubuntu-focal docker-ce-cli=5:20.10.7~3-0~ubuntu-focal containerd.io awscli jq neovim unzip ${APTARGS}
 
+curl -s https://packagecloud.io/install/repositories/netdata/netdata/script.deb.sh | sudo DEBIAN_FRONTEND=noninteractive bash
+
+sudo DEBIAN_FRONTEND=noninteractive apt-get --assume-yes update ${APTARGS}
+sudo DEBIAN_FRONTEND=noninteractive apt-get --assume-yes install netdata ${APTARGS}
+
+sudo systemctl enable netdata.service
+
 sudo curl https://releases.hashicorp.com/tfc-agent/1.3.0/tfc-agent_1.3.0_linux_amd64.zip -o tfc-agent_1.3.0_linux_amd64.zip
 
 sudo unzip tfc-agent_1.3.0_linux_amd64.zip
@@ -32,10 +39,3 @@ sudo chmod +x tfc-agent-core
 sudo cp tfc-agent /usr/local/bin
 
 sudo cp tfc-agent-core /usr/local/bin
-
-sudo DEBIAN_FRONTEND=noninteractive apt-get --assume-yes update ${APTARGS}
-sudo DEBIAN_FRONTEND=noninteractive apt-get --assume-yes install netdata ${APTARGS}
-sudo sed -i -e 's/localhost/0.0.0.0/g' /etc/netdata/netdata.conf
-sudo sed -i -e 's/\[global\]/\[global\]\n    update every = 2/' /etc/netdata/netdata.conf
-
-sudo systemctl enable netdata.service
