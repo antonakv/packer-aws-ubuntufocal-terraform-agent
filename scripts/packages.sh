@@ -28,9 +28,9 @@ sudo DEBIAN_FRONTEND=noninteractive apt-get --assume-yes install netdata ${APTAR
 
 sudo systemctl enable netdata.service
 
-sudo curl https://releases.hashicorp.com/tfc-agent/1.3.0/tfc-agent_1.3.0_linux_amd64.zip -o tfc-agent_1.3.0_linux_amd64.zip
+sudo curl https://releases.hashicorp.com/tfc-agent/1.6.0/tfc-agent_1.6.0_linux_amd64.zip -o tfc-agent_1.6.0_linux_amd64.zip
 
-sudo unzip tfc-agent_1.3.0_linux_amd64.zip
+sudo unzip tfc-agent_1.6.0_linux_amd64.zip
 
 sudo chmod +x tfc-agent
 
