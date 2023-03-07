@@ -24,7 +24,7 @@ source "amazon-ebs" "ubuntu" {
 }
 
 build {
-  name    = "ubuntufocal-tfe"
+  name    = "ubuntufocal-tfe-agent"
   sources = [
     "source.amazon-ebs.ubuntu"
   ]
