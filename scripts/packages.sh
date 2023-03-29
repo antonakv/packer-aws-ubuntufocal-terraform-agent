@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+set -euox pipefail
 
 export APTARGS="-qq -o=Dpkg::Use-Pty=0"
 export DEBIAN_FRONTEND=noninteractive
 
 DEBIAN_FRONTEND=noninteractive apt-get --assume-yes clean ${APTARGS}
+
 DEBIAN_FRONTEND=noninteractive apt-get --assume-yes update ${APTARGS}
 
 DEBIAN_FRONTEND=noninteractive apt-get --assume-yes upgrade ${APTARGS}
