@@ -29,9 +29,9 @@ DEBIAN_FRONTEND=noninteractive apt-get --assume-yes install netdata ${APTARGS}
 
 systemctl enable netdata.service
 
-curl https://releases.hashicorp.com/tfc-agent/1.7.0/tfc-agent_1.7.0_linux_amd64.zip -o tfc-agent_1.7.0_linux_amd64.zip
+curl https://releases.hashicorp.com/tfc-agent/1.10.1/tfc-agent_1.10.1_linux_amd64.zip -o tfc-agent_1.10.1_linux_amd64.zip
 
-unzip tfc-agent_1.7.0_linux_amd64.zip
+unzip tfc-agent_1.10.1_linux_amd64.zip
 
 chmod +x tfc-agent
 

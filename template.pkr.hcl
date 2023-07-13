@@ -8,9 +8,9 @@ packer {
 }
 
 source "amazon-ebs" "ubuntu" {
-  ami_name      = "packer-aws-ubuntufocal-tfcagent-13"
+  ami_name      = "packer-aws-ubuntufocal-tfcagent-2"
   instance_type = "t3.large"
-  region        = "eu-central-1"
+  region        = "eu-north-1"
   source_ami_filter {
     filters = {
       name                = "ubuntu/images/*ubuntu-focal-*-amd64-server-**"
